@@ -9,15 +9,29 @@ namespace SciSharp.Core.Sparse
     {
         public NDArray data { get; set; }
 
-        public int ndim => data.NDim;
+        public int ndim => data.ndim;
 
         public Type dtype => data.dtype;
 
-        public Shape shape => data.Shape;
+        public Shape shape => data.shape;
 
         public int maxprint { get; set; }
 
-        public int nnz => data.Size;
+        public int nnz
+        {
+            get
+            {
+                switch (data.dtype.Name)
+                {
+                    case "Int32":
+                        return data.Data<int>().Length;
+                    case "Double":
+                        return data.Data<double>().Length;
+                }
+
+                return 0;
+            }
+        }
 
         public bool has_canonical_format { get; set; }
 
@@ -41,6 +55,11 @@ namespace SciSharp.Core.Sparse
             if(shape != null)
             {
                 data.reshape(shape);
+            }
+
+            if(dtype != null)
+            {
+                data.Storage.dtype = dtype;
             }
         }
     }
