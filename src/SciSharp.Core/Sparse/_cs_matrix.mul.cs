@@ -18,6 +18,7 @@ namespace SciSharp.Core.Sparse
 
             spmatrix.csc_matvec(M, N, m1.indptr.int32, m1.indices.int32, m1.data.float64, m2.float64, result);
 
+            m1.transpose();
             return np.asmatrix(result).transpose();
         }
 
