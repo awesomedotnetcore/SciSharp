@@ -6,9 +6,9 @@ using System.Text;
 
 namespace SciSharp.Core.Sparse
 {
-    public partial class csr_matrix
+    public partial class _cs_matrix
     {
-        public csr_matrix transpose()
+        public _cs_matrix transpose()
         {
             if (data.ndim == 1)
             {
