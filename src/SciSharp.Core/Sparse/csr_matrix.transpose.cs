@@ -10,7 +10,14 @@ namespace SciSharp.Core.Sparse
     {
         public csr_matrix transpose()
         {
-            data = data.transpose();
+            if (data.ndim == 1)
+            {
+                data = data.transpose();
+            }
+            else
+            {
+                data.reshape(data.shape.Shapes.Reverse().ToArray());
+            }
 
             return this;
         }

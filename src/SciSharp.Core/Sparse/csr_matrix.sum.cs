@@ -7,17 +7,20 @@ namespace SciSharp.Core.Sparse
 {
     public partial class csr_matrix
     {
-        public void sum(int? axis = null)
+        public Matrix sum(int? axis = null)
         {
             var np = new NumPy();
             var (m, n) = shape.BiShape;
+            Matrix ret = null;
 
             // sum over columns
             if (axis == 0)
             {
                 var matrix = np.asmatrix(np.ones(new Shape(1, m), dtype));
-                var ret = matrix * this;
+                ret = matrix * this;
             }
+
+            return ret;
         }
     }
 }
