@@ -20,11 +20,6 @@ namespace SciSharp.Core.Sparse
             {
                 data.reshape(shape);
             }
-
-            if(dtype != null)
-            {
-                data.Storage.dtype = dtype;
-            }
         }
     }
 }

@@ -15,26 +15,26 @@ namespace SciSharp.Core.Sparse
 
             for (int i = 1; i < indptr.size; i++)
             {
-                indptrend = indptr.int32[i] - 1;
+                indptrend = indptr.Data<int>()[i] - 1;
 
                 for (int j = indptrstart; j < indptrend; j++)
                 {
                     
-                    if (indices.int32[j + 1] < indices.int32[j])
+                    if (indices.Data<int>()[j + 1] < indices.Data<int>()[j])
                     {
                         // switch indices
-                        tmpindicesvalue = indices.int32[j];
-                        indices.int32[j] = indices.int32[j + 1];
-                        indices.int32[j + 1] = tmpindicesvalue;
+                        tmpindicesvalue = indices.Data<int>()[j];
+                        indices.Data<int>()[j] = indices.Data<int>()[j + 1];
+                        indices.Data<int>()[j + 1] = tmpindicesvalue;
 
                         // switch value
-                        tmpdatavalue = data.float64[j];
-                        data.float64[j] = data.float64[j + 1];
-                        data.float64[j + 1] = tmpdatavalue;
+                        tmpdatavalue = data.Data<double>()[j];
+                        data.Data<double>()[j] = data.Data<double>()[j + 1];
+                        data.Data<double>()[j + 1] = tmpdatavalue;
                     }
                 }
 
-                indptrstart = indptr.int32[i];
+                indptrstart = indptr.Data<int>()[i];
             }
 
             has_sorted_indices = true;

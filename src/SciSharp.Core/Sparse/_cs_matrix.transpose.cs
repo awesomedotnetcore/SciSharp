@@ -16,7 +16,7 @@ namespace SciSharp.Core.Sparse
             }
             else
             {
-                data.reshape(data.shape.Shapes.Reverse().ToArray());
+                data.reshape(data.shape.Reverse().ToArray());
             }
 
             return this;

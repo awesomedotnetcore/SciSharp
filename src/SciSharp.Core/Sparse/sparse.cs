@@ -9,8 +9,6 @@ namespace SciSharp.Core.Sparse
     {
         public csr_matrix diags(NDArray[] diagonals, int[] offsets = null, Shape shape = null, string format = null, Type dtype = null)
         {
-            var np = new NumPy();
-
             var (m, n) = shape.BiShape;
             var data_arr = np.zeros(m);
 

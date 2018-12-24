@@ -16,7 +16,7 @@ namespace SciSharp.Core.Sparse
 
         public Type dtype => data.dtype;
 
-        public Shape shape => data.shape;
+        public Shape shape => (Shape)data.Storage.Shape;
 
         public int maxprint { get; set; }
 

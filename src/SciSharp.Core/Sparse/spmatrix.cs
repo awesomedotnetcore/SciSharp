@@ -9,7 +9,6 @@ namespace SciSharp.Core.Sparse
     {
         public static matrix sum(_cs_matrix mx, int? axis = null, Type dtype = null)
         {
-            var np = new NumPy();
             var (m, n) = mx.shape.BiShape;
             matrix ret = null;
 
@@ -33,7 +32,7 @@ namespace SciSharp.Core.Sparse
                 for (int ii = col_start; ii < col_end; ii++)
                 {
                     int i = Ai[ii];
-                    Yx.float64[i] += Ax[ii] * Xx[j];
+                    Yx.Data<double>()[i] += Ax[ii] * Xx[j];
                 }
             }
         }
